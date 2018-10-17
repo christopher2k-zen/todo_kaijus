@@ -3,7 +3,7 @@ import view from './view'
 
 
 export default function () {
-  return RouteDef<Routes>('plop', {
+  return RouteDef<Routes>('/todos', {
     enter: () => () => view(),
     children: {}
   })
