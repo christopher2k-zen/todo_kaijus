@@ -1,7 +1,6 @@
 import { h, Component, ConnectParams, RenderParams, Node, Message } from 'kaiju'
 import { update } from 'space-lift'
 
-import { fadeIn } from 'common/widget/animation/single/fade'
 import { UserStore, UserState } from './store'
 
 
@@ -48,6 +47,6 @@ function render({ state }: RenderParams<Props, State>): Node {
   return h('div', [
     h('p', 'page1.count'),
     h('button', { events: { click: increment } }, 'increment'),
-    fadeIn(usersEl)
+    usersEl
   ])
 }

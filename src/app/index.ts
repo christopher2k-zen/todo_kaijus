@@ -9,8 +9,8 @@ export default RouteDef<Routes>('', {
   enter: router => (route, child) => view({ child, router, route }),
 
   children: {
-    page1: page1(),
-    page2: page2(),
+    accueil: page1(),
+    todos: page2(),
     notFound: notFound
   }
 })

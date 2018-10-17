@@ -6,12 +6,11 @@ import { RouteDef, Route as RuntimeRoute } from 'common/util/router'
 
 
 type Nothing = {}
-type Id = { id: string }
 
 /* The enumeration of all addressable routes in the app, along with their params */
 type RouteParams = {
-  'page1': Id,
-  'page2': Nothing,
+  'accueil': Nothing,
+  'todos': Nothing,
 }
 
 export type Routes = keyof RouteParams
