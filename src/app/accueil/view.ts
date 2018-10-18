@@ -24,9 +24,7 @@ function initState(props: Props) {
   }
 }
 
-
 const increment = Message('increment')
-
 
 function connect({ on, props }: ConnectParams<Props, State>) {
   const { userStore } = props()
