@@ -1,5 +1,5 @@
 import { Store, Message } from 'kaiju'
-import { RegisterMessages } from 'kaiju/commonjs/store'
+import { RegisterHandlersParams } from 'kaiju/commonjs/store'
 import lift from 'space-lift'
 
 const storageKey: string = 'KAIJU_TODOS'
@@ -18,52 +18,57 @@ export type TodoStore = Store<TodoState>
 const initialState = { todos: _getSavedTodos() }
 
 export default function () {
-  return Store<TodoState>(initialState, (on: RegisterMessages<TodoState>) => {
-    on(addTodo, (state: TodoState, payload: string) => {
-      const todo: Models.Todo = { id: _getNextId(state.todos), label: payload, isDone: false }
+  return Store<TodoState>(initialState, ({ on, state }: RegisterHandlersParams<TodoState>) => {
+    on(addTodo, (payload: string) => {
+      const _state: TodoState = state()
+      const todo: Models.Todo = { id: _getNextId(_state.todos), label: payload, isDone: false }
       _dbAddTodo(todo)
   
-      return lift<TodoState>(state)
-        .add('todos', lift(state.todos).append(todo))
+      return lift<TodoState>(_state)
+        .add('todos', lift(_state.todos).append(todo).value())
         .value()
     })
   
-    on(modifyTodo, (state: TodoState, payload: Models.Todo) => {
+    on(modifyTodo, (payload: Models.Todo) => {
+      const _state: TodoState = state()
       _dbUpdateTodo(payload)
-      return lift<TodoState>(state)
+      return lift<TodoState>(_state)
         .add(
           'todos',
-          lift(state.todos)
+          lift(_state.todos)
             .updateAt(
-              state.todos.findIndex(t => t.id === payload.id),
+              _state.todos.findIndex(t => t.id === payload.id),
               () => payload
             )
+            .value()
         )
         .value()
     })
   
-    on(deleteTodo, (state: TodoState, payload: number) => {
+    on(deleteTodo, (payload: number) => {
+      const _state: TodoState = state()
       _dbDeleteTodo(payload)
-      return lift<TodoState>(state)
+      return lift<TodoState>(_state)
         .add(
           'todos',
-          lift(state.todos).filter(t => t.id !== payload)
+          lift(_state.todos).filter(t => t.id !== payload).value()
         )
         .value()
     })
   
-    on(invertTodoState, (state: TodoState, payload: number) => {
-      let todoIndex: number = state.todos.findIndex(t => t.id === payload)
+    on(invertTodoState, (payload: number) => {
+      const _state: TodoState = state()
+      let todoIndex: number = _state.todos.findIndex(t => t.id === payload)
       if (todoIndex === -1) {
         console.warn('Todo not found ! So, something went wrong')
-        return state
+        return _state
       } else {
-        const todo: Models.Todo = { ...state.todos[todoIndex], isDone: !state.todos[todoIndex].isDone }
+        const todo: Models.Todo = { ..._state.todos[todoIndex], isDone: !_state.todos[todoIndex].isDone }
         _dbUpdateTodo(todo)
-        return lift<TodoState>(state)
+        return lift<TodoState>(_state)
           .add(
             'todos',
-            lift(state.todos).updateAt(todoIndex, () => todo)
+            lift(_state.todos).updateAt(todoIndex, () => todo).value()
           )
           .value()
       }

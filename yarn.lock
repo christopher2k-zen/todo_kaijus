@@ -23,7 +23,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"
   integrity sha512-3TUHC3jsBAB7qVRGxT6lWyYo2v96BMmD2PTcl47H25Lu7UXtFH/2qqmKiVrnel6Ne//0TFYf6uvNX+HW2FRkLQ==
 
-"@types/parcel-env@^0.0.0":
+"@types/parcel-env@0.0.0":
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/@types/parcel-env/-/parcel-env-0.0.0.tgz#c8ed2c06cd70c9cb89d50bbb1688404fc2a93f33"
   integrity sha512-GcmAgBcg/SG5Hy3MVvcTRXf4PUIxQoNUMCjTvG6DSWAfoFwd1FKG0HxVZqHgRE4JuusR6DTrNetKi2WliIiY/g==
@@ -1482,11 +1482,6 @@ comment-json@^1.1.3:
   integrity sha1-aYbDMw/uDEyeAMI5jNYa+l2PI54=
   dependencies:
     json-parser "^1.0.0"
-
-common@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/common/-/common-0.2.5.tgz#3c7182f678bd1e3681cd5cc348c759fe8dd22394"
-  integrity sha1-PHGC9ni9HjaBzVzDSMdZ/o3SI5Q=
 
 component-emitter@^1.2.1:
   version "1.2.1"
@@ -3612,10 +3607,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-kaiju@0.27.3:
-  version "0.27.3"
-  resolved "https://registry.yarnpkg.com/kaiju/-/kaiju-0.27.3.tgz#28a4b4ecac7543ad30caaec0c5cd45f441a338e3"
-  integrity sha512-iUq+cpcp8/sk7nxsdoOCCpKpOJ8sz9B1bnyv4Xj83vHSo+LnDLHQye65buUTclB1P28AhpXEJjmEYGow3EAORA==
+kaiju@0.28.6:
+  version "0.28.6"
+  resolved "https://registry.yarnpkg.com/kaiju/-/kaiju-0.28.6.tgz#019a0fcb0b4c35d1a844215882fad60661454e25"
+  integrity sha512-MVZzlqx7mMbwgZvKDni217vIlvUyUQWuDtAun6lw8y/CRJUFEbo6qAkXO+htZ+M7rqmodXKlMpNoFl5cQvaeBA==
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -4208,7 +4203,7 @@ node-pre-gyp@^0.10.0:
     semver "^5.3.0"
     tar "^4"
 
-node-sass@^4.9.4:
+node-sass@4.9.4:
   version "4.9.4"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.9.4.tgz#349bd7f1c89422ffe7e1e4b60f2055a69fbc5512"
   integrity sha512-MXyurANsUoE4/6KmfMkwGcBzAnJQ5xJBGW7Ei6ea8KnUKuzHr/SguVBIi3uaUAHtZCPUYkvlJ3Ef5T5VAwVpaA==
@@ -4583,7 +4578,7 @@ parcel-bundler@1.9.4:
     v8-compile-cache "^2.0.0"
     ws "^5.1.1"
 
-parcel-plugin-typescript@^1.0.0:
+parcel-plugin-typescript@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/parcel-plugin-typescript/-/parcel-plugin-typescript-1.0.0.tgz#50a74b7b4f070c3fe925b07d38f385666604d550"
   integrity sha512-ctk4HF7CSqWa3b9vE42o4ruBQX200acrNg+XOu/OpMwcU4SNP1An/++d3uAARdeQHC/YVH/xOf46fKYOgJbK1w==
@@ -5692,7 +5687,7 @@ slice-ansi@1.0.0:
   dependencies:
     is-fullwidth-code-point "^2.0.0"
 
-snabbdom@^0.7.2:
+snabbdom@0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/snabbdom/-/snabbdom-0.7.2.tgz#e9d3930e6374ef8766706ccee4c6ed7b331afa64"
   integrity sha512-rDY283fYUB/3z2tjXsRRccsbVJqmGLtP+iI1tfa1DDHo2xZ49cq1leq9JmYyvZQhESuYJRY/is6WYhP2UuiRVg==
@@ -6297,7 +6292,7 @@ trim-right@^1.0.1:
   dependencies:
     glob "^7.1.2"
 
-ts-node@^7.0.1:
+ts-node@7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-7.0.1.tgz#9562dc2d1e6d248d24bc55f773e3f614337d9baf"
   integrity sha512-BVwVbPJRspzNh2yfslyT1PSbl5uIk03EZlb493RKHN4qej/D06n1cEhjlOJG69oFsE7OT8XjpTUcYf6pKTLMhw==

@@ -1,7 +1,7 @@
 import { h, Component, ConnectParams, RenderParams } from 'kaiju'
 import { update } from 'space-lift'
 
-import { TodoState, TodoStore } from './store'
+import { TodoState, TodoStore, deleteTodo, invertTodoState } from './store'
 import todoList from '../../common/widget/todoList/todoList'
 
 interface Props {
@@ -22,9 +22,11 @@ function initState (props: Props): State {
   }
 }
 
-function connect ({ on, props }: ConnectParams<Props, State>) {
+function connect ({ on, props, state }: ConnectParams<Props, State>) {
   const { store } = props()
-  on(store.state, (state: State, todoState: TodoState) => update(state, { todos: todoState.todos }))
+  on(store.state, (todoState: TodoState) => update(state(), { todos: todoState.todos }))
+  on(deleteTodo, (id: number) => store.send(deleteTodo(id)))
+  on(invertTodoState, (id: number) => store.send(invertTodoState(id)))
 }
 
 function render ({ state }: RenderParams<Props, State>) {
@@ -34,7 +36,9 @@ function render ({ state }: RenderParams<Props, State>) {
     h('div.container', [
       h('h1.title.is-1', 'Liste des tâches'),
       todoList({
-        todos
+        todos,
+        onInvertState: invertTodoState,
+        onDelete: deleteTodo
       })
     ])
   )

@@ -1,0 +1,23 @@
+.todo
+    margin-bottom: 1rem
+
+    &:last-of-type
+        margin-bottom: 2rem
+
+    &.done
+        background-color: rgb(240, 240, 240)
+
+        .todo-label
+            text-decoration: line-through
+
+    .todo-footer
+        button
+            background-color: transparent
+            outline: none
+            border: none
+            border-right: 1px solid rgb(216, 216, 216)
+            cursor: pointer
+
+            &:last-of-type
+                border-right: none
+
